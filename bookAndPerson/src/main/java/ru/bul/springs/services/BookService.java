@@ -52,6 +52,7 @@ public class BookService {
 
         updatedBook.setId(id);
         updatedBook.setOwner(bookToBeUpdated.getOwner());
+        updatedBook.setDateTake(bookToBeUpdated.getDateTake());
 
         bookRepository.save(updatedBook);
     }
