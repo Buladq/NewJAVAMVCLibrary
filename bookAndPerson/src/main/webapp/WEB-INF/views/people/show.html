@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Человек</title>
+</head>
+<body>
+
+<p th:text="${person.getFIO()+', '+person.getYear_of_birth()}">Name: VALUE</p>
+
+
+<p style="color: black" th:text="${have}"/>
+
+<!--логично если книг нет,то эта строчка не сработает-->
+<div>
+    <hr/>
+
+    <br/>
+    <table th:each="book : ${books}">
+        <tr>
+            <td>
+                <span th:text="${book.getNameBook() + ', ' + book.getAuthor_book() + ', ' + book.getYearBook()}"
+                      th:style="${book.isExpired()} ? 'color: red' : 'color: black'">
+<!--                    true И false-->
+                    book
+                </span>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+</div>
+
+
+
+
+<br>
+<hr/>
+
+
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Редактивровать</a>
+
+
+<br/><br/>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+    <input type="submit" value="Удалить"/>
+</form>
+
+</body>
+</html>
